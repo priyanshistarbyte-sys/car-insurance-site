@@ -1,20 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-declare global {
-  interface Window {
-    googletag: {
-      cmd: Array<() => void>;
-      defineSlot: (adUnitPath: string, size: number[], divId: string) => { addService: (service: unknown) => void } | null;
-      pubads: () => unknown;
-      enableServices: () => void;
-      display: (divId: string) => void;
-      destroySlots: (slots?: unknown[]) => void;
-      pubadsReady?: boolean;
-    };
-  }
-}
-
 interface BannerAdProps {
   slotId?: string;
   adUnit?: string;

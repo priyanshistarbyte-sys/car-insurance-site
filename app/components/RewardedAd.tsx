@@ -1,22 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-declare global {
-  interface Window {
-    googletag: {
-      cmd: Array<() => void>;
-      defineOutOfPageSlot: (adUnitPath: string, format: unknown) => unknown | null;
-      pubads: () => {
-        addEventListener: (event: string, handler: (e: unknown) => void) => void;
-      };
-      enableServices: () => void;
-      display: (slot: unknown) => void;
-      destroySlots: (slots: unknown[]) => void;
-      enums: { OutOfPageFormat: { REWARDED: unknown } };
-    };
-  }
-}
-
 interface RewardedAdProps {
   onClose: () => void;
 }
