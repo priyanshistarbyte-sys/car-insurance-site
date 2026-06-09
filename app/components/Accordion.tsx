@@ -1,4 +1,7 @@
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import RewardedAd from "./RewardedAd";
 
 const items = [
   {
@@ -34,17 +37,39 @@ const items = [
 ];
 
 export default function Accordion() {
+  const router = useRouter();
+  const [pendingHref, setPendingHref] = useState<string | null>(null);
+
+  const handleClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    setPendingHref(href);
+  };
+
+  const handleAdClose = () => {
+    if (pendingHref) {
+      router.push(pendingHref);
+    }
+    setPendingHref(null);
+  };
+
   return (
-    <div className="flex flex-col gap-4">
-      {items.map((item, i) => (
-        <div key={i}>
-          <Link href={item.href} className="w-full flex justify-between items-center px-4 py-3 carInsurance_Button_Container">
-            <span className="font-medium">{item.title}</span>
-            <span className="text-gray-400">❯</span>
-          </Link>
-          <p className="mt-2 px-1 text-sm text-gray-300 leading-relaxed">{item.content}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      {pendingHref && <RewardedAd onClose={handleAdClose} />}
+      <div className="flex flex-col gap-4">
+        {items.map((item, i) => (
+          <div key={i}>
+            <a
+              href={item.href}
+              onClick={(e) => handleClick(e, item.href)}
+              className="w-full flex justify-between items-center px-4 py-3 carInsurance_Button_Container cursor-pointer"
+            >
+              <span className="font-medium">{item.title}</span>
+              <span className="text-gray-400">❯</span>
+            </a>
+            <p className="mt-2 px-1 text-sm text-gray-300 leading-relaxed">{item.content}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

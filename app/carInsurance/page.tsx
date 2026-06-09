@@ -1,6 +1,7 @@
 import Accordion from "../components/Accordion";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import BannerAd from "../components/BannerAd";
 
 export default function CarInsurancePage() {
   return (
@@ -8,9 +9,7 @@ export default function CarInsurancePage() {
       <div className="max-w-6xl mx-auto px-4 py-8 flex gap-12">
         <div className="flex-1 max-w-2xl">
           <h1 className="text-2xl font-bold mb-6">Car Insurance</h1>
-           <div className="header_space ad-slot-prominent">
-            <div id="top_ad" className="gpt-display-slot gpt-display-slot-banner"></div>
-          </div>
+          <BannerAd />
           <Accordion />
 
           <div className="mt-8 flex flex-col gap-4 text-sm text-gray-300 leading-relaxed">
