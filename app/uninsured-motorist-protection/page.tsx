@@ -1,15 +1,14 @@
 import Link from "next/link";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import BannerAd from "../components/BannerAd";
 
 export default function UninsuredMotoristProtection() {
   return (
     <main className="min-h-screen bg-[#0f172a] text-white">
       <div className="max-w-6xl mx-auto px-4 py-8 flex gap-12">
         <div className="flex-1 max-w-2xl text-sm text-gray-300 leading-relaxed">
-          <div className="header_space ad-slot-prominent"  >
-                <div id="top_ad" className="gpt-display-slot gpt-display-slot-banner" ></div>
-          </div>
+          <BannerAd />
           <h1 className="text-2xl font-bold text-white mb-6">Uninsured Motorist Protection</h1>
 
           {/* Intro */}
